@@ -19,4 +19,17 @@ import { CreateFormComponent } from './create-form/create-form.component';
 })
 export class AppComponent {
   title = 'projectAddressBook';
+
+  crt = false;
+
+  showCreate(){
+
+    if(this.crt == false){
+      this.crt = true
+    }else{
+      this.crt = false
+    }
+
+  }
+
 }

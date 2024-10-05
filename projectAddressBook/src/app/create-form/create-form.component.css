@@ -1,0 +1,47 @@
+.createContainer{
+    margin: 5px 5px 0 0;
+    border-radius: 15px;
+    width: 300px; height: 62vh;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    right: 0px;
+    
+}
+
+.btnCreate{
+    width: 250px;
+    height: 40px;
+}
+
+.imgCreate{
+    position: absolute;
+    top: 30px;
+    width: 150px; height: 150px;
+    border-radius: 100%;
+    right: 80px;
+}
+
+.iconChange{
+    display: flex;
+    position: absolute;
+    justify-content: center;
+    padding-top: 5px;
+    background-color: #2681ED;
+    color: #ffffff;
+    border-radius: 100%;
+    width: 30px;
+    height: 30px;
+    transform: translate(150px, 35px);
+}
+
+.btnExit{
+    position: absolute;
+    right: 25px;
+    width: 30px; height: 30px;
+    transform: translate(-2px, 10px);
+}
+
+
+
+
