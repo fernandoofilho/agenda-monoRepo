@@ -1,0 +1,45 @@
+.container-main {
+    background-color: white;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-content: stretch;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+
+.createContainer{
+    border-radius: 15px;
+    width: 350px; height: 62vh;
+    margin-right: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white
+    
+}
+
+.btnCreate{
+    width: 300px;
+    height: 40px;
+}
+
+.imgCreate{
+    width: 150px; height: 150px;
+    display: flex;
+    margin-bottom: 30px;
+    border-radius: 100%;
+}
+
+.btnExit{
+    width: 30px; height: 30px;
+    margin-top: 20px;
+    margin-left: 260px;
+    margin-bottom: -35px;
+    justify-content: flex-end;
+}
+
+.formContainer{
+    width: 300px;
+}
