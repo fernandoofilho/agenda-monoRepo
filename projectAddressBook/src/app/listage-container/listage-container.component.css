@@ -3,5 +3,6 @@
   flex-direction: column;
   border: 1px solid;
   justify-content: left;
-  
+  overflow-y: auto;
+  max-height: 600px;  
 }

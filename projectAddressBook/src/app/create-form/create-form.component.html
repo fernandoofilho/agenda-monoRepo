@@ -15,7 +15,12 @@ saveButton      :   Refere-se ao botão de Salvar
     <div class="createContainer">
       <!-- Botão Exit -->
       <div btnExitDiv>
-        <button type="button" class="btn btn-primary btnExit" id="ExitButton" (click)="showCreate()">
+        <button
+          type="button"
+          class="btn btn-primary btnExit"
+          id="ExitButton"
+          (click)="showCreate()"
+        >
           <svg
             style="margin: 0px 0px 12px -6px"
             xmlns="http://www.w3.org/2000/svg"
@@ -209,4 +214,8 @@ saveButton      :   Refere-se ao botão de Salvar
     </div>
   </div>
 </div>
-<button (click)="showCreate()" *ngIf="!crt">Cadastrar</button>
+<div class="containerbtn"  *ngIf="!crt">
+  <button (click)="showCreate()" class="buttonCreate">
+    Cadastrar
+  </button>
+</div>

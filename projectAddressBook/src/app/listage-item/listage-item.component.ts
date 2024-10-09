@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Contact } from '../contact.service'; 
+import { Contact, ContactService } from '../contact.service'; 
 
 @Component({
   selector: 'app-listage-item',
@@ -11,6 +11,16 @@ import { Contact } from '../contact.service';
 export class ListageItemComponent {
   @Input() contact!: Contact;
 
-    constructor() {}
+  constructor(private contactService: ContactService) {}
 
+  // deleteContact() {
+  //   this.contactService.deleteContact(this.contact.id).subscribe(
+  //     response => {
+  //       console.log('Contato deletado:', response);
+  //     },
+  //     error => {
+  //       console.error('Erro ao deletar contato:', error);
+  //     }
+  //   );
+  // }
 }

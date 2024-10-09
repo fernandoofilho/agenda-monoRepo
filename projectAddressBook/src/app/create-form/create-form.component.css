@@ -64,3 +64,26 @@
     background-color: #a1dcff;
 
 } 
+
+.buttonCreate{
+    bottom: 10px;
+    width: 200px;
+    transition: 0.1s ease-in-out;
+    /* height: 100px; */
+}
+
+.buttonCreate:hover{
+    width: 210px;
+    /* height: 100px; */
+}
+
+.containerbtn{ 
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    bottom: 10px;
+    /* border: 1px solid; */
+    align-items: center;
+    align-content: center;
+}
