@@ -52,17 +52,18 @@ export class CreateFormComponent {
     
     const formData = new FormData();
     formData.append('name', this.nome);
-    formData.append('email', this.email);  // Corrigido: este era o sobrenome
+    formData.append('email', this.email);  
     formData.append('surname', this.sobrenome);
     formData.append('phone', this.telefone);
     
     if (this.imageSrc) {
-      const file = this.dataURLtoFile(this.imageSrc, 'imagem.png'); // Converter a imagem em arquivo
-      formData.append('image', file); // 'file' é o nome esperado no backend
+      const file = this.dataURLtoFile(this.imageSrc, 'imagem.png');
+      formData.append('image', file); 
     }
   
     this.contactService.createContact(formData).subscribe(response => {
       console.log('Contato criado:', response);
+      this.crt = false;
     }, error => {
       console.error('Erro ao criar contato:', error);
     });
