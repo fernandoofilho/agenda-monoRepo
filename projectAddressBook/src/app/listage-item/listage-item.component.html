@@ -1,5 +1,19 @@
-<div class="container">
-    <p>{{ id }}</p>
-    <p>{{ nome }}</p>
-
-</div>
+<div class="contact-container">
+    <div class="profile-pic">
+        <img src="../../../../api/uploads/{{ contact.image }}" alt="Foto de perfil" />
+    </div>
+    <div class="contact-info">
+      <input type="text" placeholder="Nome" value="{{ contact.name }}" disabled />
+      <input type="text" placeholder="Sobrenome" value="{{ contact.surname}}" disabled />
+    </div>
+    <div class="phone-email">
+      <div class="phone">
+        <input type="tel" placeholder="Telefone" value="{{ contact.phone }}" disabled />
+        <!-- <button class="delete-button">Delete</button> -->
+      </div>
+      <div class="email">
+        <input type="email" placeholder="Email" value="{{ contact.email }}" disabled />
+      </div>
+    </div>
+  </div>
+  

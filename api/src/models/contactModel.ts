@@ -12,8 +12,16 @@ const createContact = async (data: {
   phone: string;
   image: string;
 }) => {
+  const existingContact = await prisma.person.findUnique({
+    where: { email: data.email },
+  });
+
+  if (existingContact) {
+    throw new Error('Email já está em uso.');
+  }
+  
   return prisma.person.create({ data });
-};
+};  
 
 const deleteContact = async (id: number) => {
   return await prisma.person.delete({

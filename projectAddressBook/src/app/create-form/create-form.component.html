@@ -10,12 +10,12 @@ emailField      :   Refere-se a caixa de texto "Email"
 saveButton      :   Refere-se ao botão de Salvar
 
  -->
-
- <div class="container-main">
+<div *ngIf="crt">
+  <div class="container-main">
     <div class="createContainer">
       <!-- Botão Exit -->
       <div btnExitDiv>
-        <button type="button" class="btn btn-primary btnExit" id="ExitButton">
+        <button type="button" class="btn btn-primary btnExit" id="ExitButton" (click)="showCreate()">
           <svg
             style="margin: 0px 0px 12px -6px"
             xmlns="http://www.w3.org/2000/svg"
@@ -31,35 +31,49 @@ saveButton      :   Refere-se ao botão de Salvar
           </svg>
         </button>
       </div>
-  
+
       <!-- Imagem -->
-  
-      <div type="button" class="text-center">
-        
-        <img
-          class="imgCreate"
-          src="https://cdn-icons-png.flaticon.com/512/3135/3135768.png"
-          alt=""
-          id="imgPlaceholder"
-        />
-        <!-- <div class="iconChange">
-                  <svg  xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-fill " viewBox="0 0 16 16">
-                      <path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.5.5 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11z"/>
-                  </svg>      
-              </div> -->
+
+      <div class="text-center">
+        <div
+          class="image-upload"
+          (dragover)="onDragOver($event)"
+          (dragleave)="onDragLeave($event)"
+          (drop)="onDrop($event)"
+          (click)="fileInput.click()"
+          [ngClass]="{ dragging: isDragging }"
+        >
+          <img
+            *ngIf="imageSrc"
+            [src]="imageSrc"
+            alt="Pré-visualização da imagem"
+            class="imgCreate"
+          />
+          <div *ngIf="!imageSrc" class="upload-indicator">
+            Adicione uma Imagem
+          </div>
+          <input
+            type="file"
+            accept="image/*"
+            (change)="onFileSelected($event)"
+            #fileInput
+            hidden
+          />
+        </div>
       </div>
 
-      <input type="file" style="margin-bottom: 30px;">
-  
       <form class="formContainer">
         <!-- Nome INPPUT -> nameField -->
-  
+
         <div class="input-group mb-4">
           <input
             type="text"
             class="form-control"
             placeholder="Nome"
+            required
             id="nameField"
+            name="nome"
+            [(ngModel)]="nome"
             required
           />
           <span
@@ -82,9 +96,9 @@ saveButton      :   Refere-se ao botão de Salvar
             </svg>
           </span>
         </div>
-  
+
         <!-- Sobrenome input -> surnameField -->
-  
+
         <div class="input-group mb-4">
           <input
             type="text"
@@ -92,6 +106,8 @@ saveButton      :   Refere-se ao botão de Salvar
             placeholder="Sobrenome"
             id="surnameField"
             required
+            [(ngModel)]="sobrenome"
+            name="sobrenome"
           />
           <span
             style="background-color: #7fd1ff"
@@ -113,9 +129,9 @@ saveButton      :   Refere-se ao botão de Salvar
             </svg>
           </span>
         </div>
-  
+
         <!-- Telefone input -> telField -->
-  
+
         <div class="input-group mb-4">
           <input
             type="tel"
@@ -123,6 +139,8 @@ saveButton      :   Refere-se ao botão de Salvar
             placeholder="Telefone"
             id="telField"
             required
+            [(ngModel)]="telefone"
+            name="telefone"
           />
           <span
             style="background-color: #89f2a6"
@@ -145,9 +163,9 @@ saveButton      :   Refere-se ao botão de Salvar
             </svg>
           </span>
         </div>
-  
+
         <!-- Email Field -> emailField -->
-  
+
         <div class="input-group mb-4">
           <input
             type="email"
@@ -155,6 +173,8 @@ saveButton      :   Refere-se ao botão de Salvar
             placeholder="Email"
             id="emailField"
             required
+            [(ngModel)]="email"
+            name="email"
           />
           <span
             style="background-color: #f2e189"
@@ -176,51 +196,17 @@ saveButton      :   Refere-se ao botão de Salvar
             </svg>
           </span>
         </div>
-  
-        <!-- <div class="mb-3 labelContainer">
-                  <label for="surnameField" class="form-label lblCreate" hidden >Sobrenome</label>
-                  <input type="text" class="form-control textCreate" id="surnameField" placeholder="Sobrenome">
-              </div>
-  
-              <div class="mb-3 labelContainer">
-                  <label for="telField" class="form-label lblCreate" hidden>Telefone</label>
-                  <input type="tell" class="form-control textCreate" id="telField" placeholder="Telefone">
-              </div>
-  
-              <div class="mb-3 labelContainer">
-                  <label for="emailField" class="form-label lblCreate" hidden >Email</label>
-                  <input type="email" class="form-control textCreate" id="emailField" placeholder="Email">
-              </div> -->
-  
-        <button type="submit" class="btn btn-primary btnCreate" id="saveButton" (click)="submit()">
+
+        <button
+          type="submit"
+          class="btn btn-primary btnCreate"
+          id="saveButton"
+          (click)="submit()"
+        >
           Salvar
         </button>
       </form>
-  
-      <!--  Descartado temporariamente
-          
-          
-          <form>
-              <div class="form-floating">
-                  <input type="text" class="form-control btnCreate" id="nameField floatingInput" placeholder="name@example.com" >
-                  <label for="nameField">Nome</label>
-              </div>
-  
-              <div class="form-floating">
-                  <input type="text" class="form-control btnCreate" id="surnameField" placeholder="Password">
-                  <label for="surnameField">Sobrenome</label>
-              </div>
-  
-              <div class="form-floating">
-                  <input type="tel" class="form-control btnCreate" id="telField" placeholder="Password">
-                  <label for="telField">Telefone</label>
-              </div>
-  
-              <div class="form-floating">
-                  <input type="email" class="form-control btnCreate" id="emailField" placeholder="Password">
-                  <label for="emailField">Email</label>
-              </div>
-          </form> -->
     </div>
   </div>
-  
+</div>
+<button (click)="showCreate()" *ngIf="!crt">Cadastrar</button>

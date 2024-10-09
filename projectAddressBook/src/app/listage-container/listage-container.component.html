@@ -1,15 +1,5 @@
-
 <div class="container">
-  <ul>
-    <li *ngFor="let item of mockData">
-      <app-listage-item
-        id={{item.id}}
-        nome={{item.nome}}
-        imgPath={{item.imgPath}}
-        apelido={{item.apelido}}
-        mail={{item.mail}}
-        telefone={{item.telefone}}
-      />
-    </li>
-  </ul>
+  <div *ngFor="let contact of contacts">
+    <app-listage-item [contact]="contact"></app-listage-item>
+  </div>
 </div>
