@@ -10,7 +10,7 @@ emailField      :   Refere-se a caixa de texto "Email"
 saveButton      :   Refere-se ao botão de Salvar
 
  -->
-<div *ngIf="crt">
+<div *ngIf="crt" class="container">
   <div class="container-main">
     <div class="createContainer">
       <!-- Botão Exit -->
@@ -214,6 +214,8 @@ saveButton      :   Refere-se ao botão de Salvar
     </div>
   </div>
 </div>
+
+
 <div class="containerbtn"  *ngIf="!crt">
   <button (click)="showCreate()" class="buttonCreate">
     Cadastrar

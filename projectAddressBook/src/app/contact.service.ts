@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 export interface Contact {
-  id?: number; 
+  id?: number;
   nome: string;
   name?: string;
   sobrenome: string;
@@ -12,7 +12,7 @@ export interface Contact {
   email: string;
   telefone: string;
   phone?: string;
-  image?: any; 
+  image?: any;
 
 }
 

@@ -5,7 +5,9 @@ import path from "path";
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, "uploads/");
+    const uploadPath = path.resolve(__dirname, "../../../src/assets/");
+
+    cb(null, uploadPath);
   },
   filename: (req, file, cb) => {
     const ext = path.extname(file.originalname);
@@ -39,7 +41,7 @@ const createContact = async (req: Request, res: Response) => {
 const deleteContact = async (req: Request, res: Response) => {
   const { id } = req.params;
   await contactService.deleteContact(Number(id));
-  res.status(204).send(); 
+  res.status(204).send();
 };
 
 const updateContact = async (req: Request, res: Response) => {

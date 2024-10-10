@@ -1,26 +1,30 @@
-import { Component, Input } from '@angular/core';
-import { Contact, ContactService } from '../contact.service'; 
-
+import { Component, Input, ViewContainerRef } from '@angular/core';
+import { Contact, ContactService } from '../contact.service';
+import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-listage-item',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './listage-item.component.html',
-  styleUrls: ['./listage-item.component.css'], 
+  styleUrls: ['./listage-item.component.css'],
 })
 export class ListageItemComponent {
   @Input() contact!: Contact;
+  showContact: Boolean = true;
 
   constructor(private contactService: ContactService) {}
 
-  // deleteContact() {
-  //   this.contactService.deleteContact(this.contact.id).subscribe(
-  //     response => {
-  //       console.log('Contato deletado:', response);
-  //     },
-  //     error => {
-  //       console.error('Erro ao deletar contato:', error);
-  //     }
-  //   );
-  // }
+  handleDisable(){
+    this.showContact = false
+  }
+
+
+  deleteContact(){
+    const id = this.contact.id
+    if (id){
+      this.contactService.deleteContact(+id).subscribe(
+        this.handleDisable
+      )
+    }
+  }
 }
