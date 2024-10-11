@@ -5,4 +5,24 @@
   justify-content: left;
   overflow-y: auto;
   max-height: 600px;  
+  border: 1px solid;
+  border-radius: 2rem;
+}
+
+/* Para o scrollbar do Chrome  */
+::-webkit-scrollbar {
+  width: 12px; /* Largura do scrollbar */
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Cor da trilha */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888; /* Cor do botão do scrollbar */
+  border-radius: 10px; /* Bordas arredondadas */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555; /* Cor do botão ao passar o mouse */
 }
