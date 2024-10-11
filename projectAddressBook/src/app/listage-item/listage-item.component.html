@@ -1,6 +1,6 @@
 <div class="contact-container">
     <div class="profile-pic">
-        <img src="../../../../api/uploads/{{ contact.image }}" alt="Foto de perfil" />
+        <img [(src)]="photo" alt="Foto de perfil" />
     </div>
     <div class="contact-info">
       <input type="text" placeholder="Nome" value="{{ contact.name }}" disabled />
@@ -9,7 +9,7 @@
     <div class="phone-email">
       <div class="phone">
         <input type="tel" placeholder="Telefone" value="{{ contact.phone }}" disabled />
-        <!-- <button class="delete-button" (click)="deleteContact()">Delete</button> -->
+        <button class="delete-button" (click)="deleteContact()">Delete</button>
       </div>
       <div class="email">
         <input type="email" placeholder="Email" value="{{ contact.email }}" disabled />

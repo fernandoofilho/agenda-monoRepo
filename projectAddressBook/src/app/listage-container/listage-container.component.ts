@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ContactService, Contact } from '../contact.service'; // Ajuste o caminho se necessário
 import { CommonModule } from '@angular/common';
 import { ListageItemComponent } from '../listage-item/listage-item.component';
@@ -11,22 +11,11 @@ import { ListageItemComponent } from '../listage-item/listage-item.component';
   styleUrls: ['./listage-container.component.css'],
 })
 export class ListageContainerComponent implements OnInit {
-  contacts: Contact[] = [];
+  @Input() contacts: Contact[] = [];
 
-  constructor(private contactService: ContactService) {}
+  ngOnInit() {}
 
-  ngOnInit() {
-    this.loadContacts();
-  }
-
-  loadContacts() {
-    this.contactService.getAllContacts().subscribe(
-      (data) => {
-        this.contacts = data; 
-      },
-      (error) => {
-        console.error('Erro ao carregar contatos:', error);
-      }
-    );
+  removeContactFromList(contactId: number) {
+    this.contacts = this.contacts.filter((contact) => contact.id !== contactId);
   }
 }

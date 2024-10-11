@@ -1,5 +1,10 @@
 <div class="container">
   <div *ngFor="let contact of contacts">
-    <app-listage-item [contact]="contact"></app-listage-item>
+    <app-listage-item
+      [contact]="contact"
+      (contactDeleted)="removeContactFromList($event)"
+    >
+      ></app-listage-item
+    >
   </div>
 </div>

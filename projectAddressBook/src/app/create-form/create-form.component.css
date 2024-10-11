@@ -1,89 +1,81 @@
 .container-main {
-    background-color: white;
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    align-content: stretch;
-    flex-direction: row;
-    justify-content: flex-end;
+  /* width: 100vw; */
+  height: 100%;
+  display: flex;
+  align-content: stretch;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
-
-.createContainer{
-    border-radius: 15px;
-    width: 350px; height: 62vh;
-    margin-right: 40px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: white
-    
+.createContainer {
+  border-radius: 15px;
+  width: 350px;
+  height: 62vh;
+  margin-right: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* background-color: #006400 */
 }
 
-.btnCreate{
-    width: 300px;
-    height: 40px;
+.btnCreate {
+  width: 300px;
+  height: 40px;
+  background-color: #006400;
+  border: 1px solid #006400;
 }
 
-.imgCreate{
-    width: 150px; height: 150px;
-    display: flex;
-    margin-bottom: 30px;
-    border-radius: 100%;
+.imgCreate {
+  width: 150px;
+  height: 150px;
+  display: flex;
+  margin-bottom: 30px;
+  border-radius: 100%;
 }
 
-.btnExit{
-    width: 30px; height: 30px;
-    margin-top: 20px;
-    margin-left: 260px;
-    margin-bottom: -35px;
-    justify-content: flex-end;
+.btnExit {
+  width: 30px;
+  height: 30px;
+  margin-top: 20px;
+  margin-left: 260px;
+  margin-bottom: -35px;
+  justify-content: flex-end;
+  background-color: #006400;
+  border: 1px solid #006400;
 }
 
-.formContainer{
-    width: 300px;
+.formContainer {
+  width: 300px;
 }
 
 .upload-indicator {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    background-color: #7fd1ff;
-    display: flex;
-    justify-content: center; 
-    align-items: center; 
-    margin: 0 auto;
-    color: grey;
-    cursor: pointer;
-    transition: 0.3s ease-in-out;
-    margin: 1rem;
-    padding: 1rem;
-    
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: #006400;
+  border: 1px solid #6f886f;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  color: #fff;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+  margin: 1rem;
+  padding: 1rem;
 }
 .upload-indicator:hover {
-    background-color: #a1dcff;
-
-} 
-
-.buttonCreate{
-    bottom: 10px;
-    width: 200px;
-    transition: 0.1s ease-in-out;
-    /* height: 100px; */
+  background-color: #6f886f;
 }
 
-.buttonCreate:hover{
-    width: 210px;
-    /* height: 100px; */
+.buttonCreate {
+  bottom: 10px;
+  width: 200px;
+  transition: 0.1s ease-in-out;
+  /* height: 100px; */
 }
 
-.containerbtn{ 
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    position: absolute;
-    bottom: 10px;
-    /* border: 1px solid; */
-    align-items: center;
-    align-content: center;
+.buttonCreate:hover {
+  width: 210px;
+  /* height: 100px; */
 }

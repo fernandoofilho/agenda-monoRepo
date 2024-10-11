@@ -1,4 +1,13 @@
-
-
- <app-create-form></app-create-form>
-<app-listage-container></app-listage-container>
+<div class="container-title">
+  <h1>Agenda de Contatos</h1>
+</div>
+<div class="container">
+    <!-- load contacts é uma função de app-listage-container -->
+  <app-listage-container  [contacts]="contacts"></app-listage-container>
+  <app-create-form [(crt)]="crt"
+  (contactCreated)="loadContacts()"
+  ></app-create-form>
+</div>
+<div class="containerbtn">
+  <button (click)="showCreate()" class="buttonCreate">Cadastrar</button>
+</div>

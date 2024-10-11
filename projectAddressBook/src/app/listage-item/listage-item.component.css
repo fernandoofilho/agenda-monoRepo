@@ -1,76 +1,78 @@
-
 .contact-container {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    max-width: 600px;
-    margin: 0 auto;
-    transition: transform 0.3s ease-in-out;
-  }
-  
-  .profile-pic {
-    flex-shrink: 0;
-    margin-right: 20px;
-    display: flex;
-    align-items: center;
-  }
-  
-  .profile-pic img {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    object-fit: cover;
-  }
-  
-  .contact-info, .phone-email {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .contact-info input, .phone-email input {
-    width: 250px;
-    padding: 8px;
-    margin-bottom: 10px;
-    font-size: 14px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-  }
-  
-  .phone-email {
-    margin-left: 20px;
-  }
-  
-  .phone {
-    display: flex;
-    align-items: center;
-  }
-  
-  .phone input {
-    width: 150px;
-    margin-right: 10px;
-  }
-  
-  .delete-button {
-    padding: 8px 22.3px;
-    background-color: red;
-    color: white;
-    border: none;
-    cursor: pointer;
-    border-radius: 4px;
-    font-size: 14px;
-    height: 100%;
-    align-self: flex-start;
-  }
-  
-  .email input {
-    width: 250px;
-  }
-  .container {
-    display: flex;
-    gap: 3px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  max-width: fit-content;
+  background-color: #90ee90;
+
+  margin: 1rem;
+  border-radius: 0.4rem;
+  transition: transform 0.3s ease-in-out;
 }
 
+.profile-pic {
+  flex-shrink: 0;
+  margin-right: 20px;
+  display: flex;
+  align-items: center;
+}
 
+.profile-pic img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.contact-info,
+.phone-email {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-info input,
+.phone-email input {
+  width: 250px;
+  padding: 8px;
+  margin-bottom: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.phone-email {
+  margin-left: 20px;
+}
+
+.phone {
+  display: flex;
+  align-items: center;
+}
+
+.phone input {
+  width: 150px;
+  margin-right: 10px;
+}
+
+.delete-button {
+  padding: 8px 22.3px;
+  background-color: red;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 14px;
+  height: 100%;
+  align-self: flex-start;
+}
+
+.email input {
+  width: 250px;
+}
+.container {
+  display: flex;
+  gap: 3px;
+}

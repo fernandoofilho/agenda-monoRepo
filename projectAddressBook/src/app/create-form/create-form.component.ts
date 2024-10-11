@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ContactService, Contact } from '../contact.service';
@@ -20,14 +20,15 @@ export class CreateFormComponent {
   telefone: string = '';
   imageSrc: string | ArrayBuffer | null | undefined = null;
   isDragging: boolean = false;
-  
-  crt = false;
 
+  @Input() crt: boolean = false;
+  @Output() crtChange = new EventEmitter<boolean>();
+  @Output() contactCreated = new EventEmitter<void>();
   showCreate() {
-    console.log(this.crt)
     this.crt = !this.crt;
+    this.crtChange.emit(this.crt); 
   }
-  
+
   private dataURLtoFile(dataURL: string | ArrayBuffer, filename: string): File {
     const arr = (dataURL as string).split(',');
     const mimeMatch = arr[0].match(/:(.*?);/);
@@ -44,31 +45,30 @@ export class CreateFormComponent {
     return new File([u8arr], filename, { type: mime });
   }
 
-
-
   constructor(private contactService: ContactService) {}
-  
+
   submit() {
-    
     const formData = new FormData();
     formData.append('name', this.nome);
-    formData.append('email', this.email);  
+    formData.append('email', this.email);
     formData.append('surname', this.sobrenome);
     formData.append('phone', this.telefone);
-    
+
     if (this.imageSrc) {
       const file = this.dataURLtoFile(this.imageSrc, 'imagem.png');
-      formData.append('image', file); 
+      formData.append('image', file);
     }
-  
-    this.contactService.createContact(formData).subscribe(response => {
-      console.log('Contato criado:', response);
-      this.crt = false;
-    }, error => {
-      console.error('Erro ao criar contato:', error);
-    });
-  }
 
+    this.contactService.createContact(formData).subscribe(
+      (response) => {
+        this.contactCreated.emit(); 
+        this.crt = false;
+      },
+      (error) => {
+        console.error('Erro ao criar contato:', error);
+      }
+    );
+  }
 
   onFileSelected(event: Event) {
     const input = event.target as HTMLInputElement;
