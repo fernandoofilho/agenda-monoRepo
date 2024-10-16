@@ -13,7 +13,7 @@ export class ListageItemComponent {
   @Output() contactDeleted = new EventEmitter<number>();
   @Output() contactFavorited = new EventEmitter<void>();
   
-  photo= `http://localhost:5001/uploads/${this.contact?.image}`
+  photo= "https://www.flaticon.com/br/icone-gratis/perfil_3135768"
   constructor(private contactService: ContactService) {}
 
 
