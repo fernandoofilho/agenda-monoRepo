@@ -13,8 +13,27 @@ import { ListageItemComponent } from '../listage-item/listage-item.component';
 export class ListageContainerComponent implements OnInit {
   @Input() contacts: Contact[] = [];
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.sortContactsByFavorite();
 
+  }
+
+
+  sortContactsByFavorite() {
+    this.contacts.sort((a, b) => {
+      if (a.favorite && !b.favorite) {
+        return -1;
+      }
+      if (!a.favorite && b.favorite) {
+        return 1;
+      }
+      return 0;
+    });
+  }
+
+  handleContactFavorited() {
+    this.sortContactsByFavorite();
+  }
   removeContactFromList(contactId: number) {
     this.contacts = this.contacts.filter((contact) => contact.id !== contactId);
   }

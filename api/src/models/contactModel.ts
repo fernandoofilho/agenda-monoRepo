@@ -5,6 +5,10 @@ const getAllContacts = async () => {
   return prisma.person.findMany();
 };
 
+const getContact = async (id: number) => {
+  return prisma.person.findUnique({where:{id: id}});
+};
+
 const createContact = async (data: {
   name: string;
   email: string;
@@ -42,5 +46,6 @@ export default {
   getAllContacts,
   createContact,
   deleteContact,
-  updateContact
+  updateContact,
+  getContact
 };

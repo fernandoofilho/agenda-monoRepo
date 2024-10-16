@@ -3,11 +3,16 @@ import contactController from './controller/contactController';
 import cors from 'cors';
 
 const app = express();
+const path = require('path');
+
 app.use(express.json());
 app.use(cors());
+app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
+
 app.get('/contacts', contactController.getAllContacts);
 app.post('/contacts', contactController.createContact);
 app.delete('/contacts/:id', contactController.deleteContact); 
 app.put('/contacts/:id', contactController.updateContact); 
+app.put('/contacts/favorite/:id', contactController.favoriteContact); 
 
 export default app;

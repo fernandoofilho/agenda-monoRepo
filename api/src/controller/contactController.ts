@@ -50,10 +50,22 @@ const updateContact = async (req: Request, res: Response) => {
   res.status(200).json(updatedContact);
 };
 
+const favoriteContact = async (req: Request, res: Response) => {
+  const { id } = req.params;
+  const contact = await contactService.getContact(+id)
+  if (!contact){
+    res.status(400).json({message:" Contato não encontrados "})
+  } 
+  const updatedContact = await contactService.updateContact(Number(id), { ...contact, favorite: !contact?.favorite});
+
+  res.status(200).json(updatedContact);
+};
+
 
 export default {
   getAllContacts,
   createContact: [upload.single("image"), createContact],
   deleteContact,
   updateContact,
+  favoriteContact
 };

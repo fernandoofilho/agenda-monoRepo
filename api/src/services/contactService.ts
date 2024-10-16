@@ -4,6 +4,10 @@ const getAllContacts = async () => {
   return await contactModel.getAllContacts();
 };
 
+const getContact = async (id: number) => {
+  return await contactModel.getContact(id);
+};
+
 const createContact = async (data: {
   name: string;
   email: string;
@@ -26,11 +30,12 @@ const createContact = async (data: {
 const deleteContact = async (id: number) => {
   return await contactModel.deleteContact(id);
 };
-const updateContact = async (id: number, data: { name?: string, email?: string, surname?: string, phone?: string, image?: string }) => {
+const updateContact = async (id: number, data: { name?: string, email?: string, surname?: string, phone?: string, image?: string, favorite?: boolean }) => {
     return await contactModel.updateContact(id, data);
   };
 export default {
   getAllContacts,
+  getContact,
   createContact,
   deleteContact,
   updateContact
