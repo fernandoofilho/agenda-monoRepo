@@ -1,6 +1,6 @@
 <div class="contact-container">
     <div class="profile-pic">
-        <img [(src)]="photo" alt="Foto de perfil" />
+      <img [src]="'http://localhost:5001/uploads/' + contact.image" alt="Foto de perfil" />
     </div>
     <div class="contact-info">
       <input type="text" placeholder="Nome" value="{{ contact.name }}" disabled />
@@ -15,5 +15,8 @@
         <input type="email" placeholder="Email" value="{{ contact.email }}" disabled />
       </div>
     </div>
+    <button [ngClass]="!this.contact.favorite ? 'star-button-disabled' : 'star-button'" (click)="handleClick()">
+      ★
+    </button>
   </div>
   

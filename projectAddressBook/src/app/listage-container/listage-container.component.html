@@ -3,6 +3,8 @@
     <app-listage-item
       [contact]="contact"
       (contactDeleted)="removeContactFromList($event)"
+      (contactFavorited)="handleContactFavorited()">
+
     >
       ></app-listage-item
     >

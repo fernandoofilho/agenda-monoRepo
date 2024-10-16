@@ -13,6 +13,7 @@ export interface Contact {
   telefone: string;
   phone?: string;
   image?: any; 
+  favorite?: boolean; 
 
 }
 
@@ -37,6 +38,10 @@ export class ContactService {
     return this.http.put<Contact>(`${this.apiUrl}/${id}`, contact);
   }
 
+  favoriteContact(id: number): Observable<Contact> {
+    return this.http.put<Contact>(`${this.apiUrl}/favorite/${id}`, {});
+  }
+  
   deleteContact(id: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }

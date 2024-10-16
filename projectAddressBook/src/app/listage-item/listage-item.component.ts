@@ -1,23 +1,34 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Contact, ContactService } from '../contact.service';
-
+import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-listage-item',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './listage-item.component.html',
   styleUrls: ['./listage-item.component.css'],
 })
 export class ListageItemComponent {
   @Input() contact!: Contact;
   @Output() contactDeleted = new EventEmitter<number>();
-
-  photo= "https://as2.ftcdn.net/v2/jpg/02/15/84/43/1000_F_215844325_ttX9YiIIyeaR7Ne6EaLLjMAmy4GvPC69.jpg"
+  @Output() contactFavorited = new EventEmitter<void>();
+  
+  photo= `http://localhost:5001/uploads/${this.contact?.image}`
   constructor(private contactService: ContactService) {}
+
+
+  handleClick() {
+      this.contact.favorite = !this.contact.favorite;
+      this.contactService.favoriteContact(this.contact?.id || 0).subscribe(()=> 
+      {
+        this.contactFavorited.emit();
+      })
+  }
 
   deleteContact() {
     this.contactService.deleteContact(this.contact.id || 0).subscribe(() => {
       this.contactDeleted.emit(this.contact.id); 
     });
+
   } 
 }
