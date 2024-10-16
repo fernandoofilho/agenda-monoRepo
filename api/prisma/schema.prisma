@@ -20,6 +20,7 @@ model person {
   email     String   @unique 
   phone     String
   image     String
+  favorite  Boolean @default(false)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }

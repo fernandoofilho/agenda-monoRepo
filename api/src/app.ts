@@ -8,5 +8,6 @@ app.get('/contacts', contactController.getAllContacts);
 app.post('/contacts', contactController.createContact);
 app.delete('/contacts/:id', contactController.deleteContact); 
 app.put('/contacts/:id', contactController.updateContact); 
+app.put('/contacts/favorite/:id', contactController.favoriteContact); 
 
 export default app;
